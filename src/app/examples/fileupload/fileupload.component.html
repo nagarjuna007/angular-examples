@@ -1,0 +1,14 @@
+<p>File upload</p>
+<form [formGroup]="fileform" (ngSubmit)="onSubmit()" class="mb-2">  
+  <div>
+    <input type="text" formControlName="firstName" placeholder="Name" class="form-control mb-1">
+  </div>
+  <div>
+    <input type="text" formControlName="lastName" placeholder="lastName" class="form-control mb-1">
+  </div>
+  <div class="mb-1">
+    <input type="file" formControlName="file" (change)="fileChange($event)" multiple placeholder="file">
+  </div>
+<button type="submit" class="btn btn-primary mr-1">submit</button>
+<button type="button" class="btn btn-primary" (click)="clearFile()">clear</button>
+</form>

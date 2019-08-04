@@ -1,0 +1,17 @@
+<div>
+  <button class="btn btn-primary" (click)="showSecret=!showSecret">Display Details</button>
+  <p *ngIf="showSecret">secret password : tuna</p>
+  <hr/>
+  <button class="btn btn-primary" (click)="onToggleDetails()">Toggle Display Details</button>
+<p *ngIf="showSecret1">secret password : tuna</p>
+
+<!-- <div *ngFor="let logitem of log"
+[ngStyle]="{backgroundColor:logitem>=5 ? 'blue':'transprent'}"
+[ngClass]="{'text-white':logitem>=5}"
+>{{logitem}}</div> -->
+
+<div *ngFor="let logitem of log; let i=index"
+[ngStyle]="{backgroundColor:i>=5 ? 'blue':'transprent'}"
+[ngClass]="{'text-white':i>=5}"
+>{{logitem}}</div>
+</div>
