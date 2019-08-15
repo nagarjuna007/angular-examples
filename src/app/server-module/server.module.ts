@@ -7,6 +7,7 @@ import { ServerModuleComponent } from './servermodule.component';
 import { ServerElementComponent } from './addServers/serverelement.component';
 import { CockpitComponent } from './cockpit/cockpit.component';
 import { ServerElementTwoComponent } from './server-element/server-element.component';
+import { ServerHeaderComponent } from './header/header.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
@@ -18,7 +19,7 @@ import { ServerElementTwoComponent } from './server-element/server-element.compo
       }
     ])
   ],
-  declarations: [ServerModuleComponent, ServerElementComponent, CockpitComponent, ServerElementTwoComponent],
+  declarations: [ServerModuleComponent, ServerElementComponent, CockpitComponent, ServerElementTwoComponent, ServerHeaderComponent],
   providers: []
 })
 export class ServerModule { }

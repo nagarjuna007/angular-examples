@@ -5,16 +5,7 @@
 			<button class="btn btn-primary" type="button">Add Recipe</button>
   </div>
   <div class="col-sm-12">
-    <a href="#" *ngFor="let recipe of Recipes">
-      <ul class="list-inline p-2 border my-2 rounded">
-        <li>{{recipe.name}}</li>
-        <li>{{recipe.description}}</li>
-        <li><img [src]="recipe.imagePath" class="img-fluid max-height-60 rounded" title="{{recipe.imagePath}}" /></li>
-      </ul>
-    </a>
-  </div>
-  <div class="col-sm-12">
-<app-recipes-item></app-recipes-item>
+<app-recipes-item *ngFor="let recipeEl of Recipes" [recipe]="recipeEl" (recipeSelected)="onRecipeSelected(recipeEl)"></app-recipes-item>
   </div>
 </div>
 </div>

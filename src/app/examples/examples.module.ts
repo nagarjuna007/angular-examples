@@ -11,9 +11,17 @@ import { TwowaybindingComponent } from './twoWayBinding/twowaybinding.component'
 import { NgifngforComponent } from './ngifngfor/ngifngfor.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { UploadService } from './fileupload/upload.service';
+import { ExamplesHeaderComponent } from './header/header.component';
+import { HeroesComponent } from './heros/heros.component';
+import { HeroService } from './heros/heros.service';
+import { GalleryComponent } from './gallery/gallery.component';
+import { NgxGalleryModule } from 'ngx-gallery';
+import { BasicHighlightDirective } from './basic-highlight/basic-highlight.directive';
+import { BetterHighlightDirective } from './better-highlight/better-highlight.directive';
+import { UnlessDirective } from './better-highlight/unless.directive';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, NgxGalleryModule, HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'examples', component: ExamplesComponent, children: [
@@ -22,7 +30,7 @@ import { UploadService } from './fileupload/upload.service';
       }
     ])
   ],
-  declarations: [ExamplesComponent, HomeComponent, ServersComponent, ServerComponent, TwowaybindingComponent, NgifngforComponent, FileuploadComponent],
-  providers: [UploadService]
+  declarations: [ExamplesComponent, HomeComponent, ServersComponent, ServerComponent, TwowaybindingComponent, NgifngforComponent, ExamplesHeaderComponent, FileuploadComponent, HeroesComponent, GalleryComponent, BasicHighlightDirective, BetterHighlightDirective, UnlessDirective],
+  providers: [UploadService, HeroService]
 })
 export class ExamplesModule { }

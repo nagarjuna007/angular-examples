@@ -1,5 +1,13 @@
 <div class="container my-3">
 	<div class="bg-white p-3 rounded">
-		sdsdfs
-	</div>
-</div>
+		<my-game-control (intervalFired)="onIntervalFired($event)"></my-game-control>
+		<div class="mt-2 row">
+			<div class="col-6">
+				<my-odd *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"></my-odd>
+			</div>
+			<div class="col-6">
+				<my-even *ngFor="let evenNumber of evenNumbers" [number]="evenNumber"></my-even>
+			</div>
+			<div>
+			</div>
+		</div>

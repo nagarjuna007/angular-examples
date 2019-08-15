@@ -1,17 +1,63 @@
 <div>
-  <button class="btn btn-primary" (click)="showSecret=!showSecret">Display Details</button>
+	<button class="btn btn-primary" (click)="showSecret=!showSecret">Display Details</button>
   <p *ngIf="showSecret">secret password : tuna</p>
   <hr/>
   <button class="btn btn-primary" (click)="onToggleDetails()">Toggle Display Details</button>
 <p *ngIf="showSecret1">secret password : tuna</p>
 
-<!-- <div *ngFor="let logitem of log"
-[ngStyle]="{backgroundColor:logitem>=5 ? 'blue':'transprent'}"
-[ngClass]="{'text-white':logitem>=5}"
->{{logitem}}</div> -->
-
 <div *ngFor="let logitem of log; let i=index"
 [ngStyle]="{backgroundColor:i>=5 ? 'blue':'transprent'}"
-[ngClass]="{'text-white':i>=5}"
->{{logitem}}</div>
+[ngClass]="{'text-white':i>=5}">{{logitem}}</div>
+</div>
+<div>
+  <button class="btn btn-primary mt-1" (click)="onlyOdd=!onlyOdd">Only show odd numbers</button>
+  <ul class="list-group mt-1">
+     <!-- 
+    <div *ngIf="!onlyOdd">
+    <li class="list-group-item" 
+    [ngClass]="{odd:even%2!==0}"
+    [ngStyle]="{backgroundColor:even%2!==0 ? 'yellow':'blue'}"
+     *ngFor="let even of evenNumbers">
+      {{even}}
+    </li>
+    </div>
+    <ng-template [ngIf]="!onlyOdd">
+      <li class="list-group-item" 
+    [ngClass]="{odd:even%2!==0}"
+    [ngStyle]="{backgroundColor:even%2!==0 ? 'yellow':'blue'}"
+     *ngFor="let even of evenNumbers">
+      {{even}}
+    </li>
+    </ng-template>
+
+    <div *ngIf="onlyOdd">
+    <li class="list-group-item" 
+    [ngClass]="{odd:odd%2!==0}"
+    [ngStyle]="{backgroundColor:odd%2!==0 ? 'yellow':'blue'}"
+     *ngFor="let odd of oddNumbers">
+      {{odd}}
+    </li>
+    </div> -->
+    <div *ngIf="onlyOdd">
+    <li class="list-group-item" 
+    [ngClass]="{odd:odd%2!==0}"
+    [ngStyle]="{backgroundColor:odd%2!==0 ? 'yellow':'blue'}"
+     *ngFor="let odd of oddNumbers">
+      {{odd}}
+    </li>
+    </div>
+    <div *appUnless="onlyOdd">
+    <li class="list-group-item" 
+    [ngClass]="{odd:even%2!==0}"
+    [ngStyle]="{backgroundColor:even%2!==0 ? 'yellow':'blue'}"
+     *ngFor="let even of evenNumbers">
+      {{even}}
+    </li>
+    </div>
+  </ul>
+  <div [ngSwitch]="value">
+    <p *ngSwitchCase="5">value is 5</p>
+    <p *ngSwitchCase="10">value is 10</p>
+    <p *ngSwitchDefault>value is Default</p>
+  </div>
 </div>

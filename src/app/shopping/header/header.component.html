@@ -1,16 +1,24 @@
-<section class="header">
+<div class="bg-white">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-4"><a href="#" class="logo">Recipe Book</a></div>
 			<div class="col-8">
+				<div class="d-flex align-items-center">
+					<div class="menu-btn">
+            <span class="line one"></span>
+            <span class="line two"></span>
+            <span class="line three"></span>
+          </div>
+					<div class="logo py-2 menu-line position-relative" routerLink="/">RECIPE SHOPPING</div>
+				</div>
+			</div>
+			<div class="col-4">
 				<ul class="list-inline">
-					<li><a href="#">Recipes</a></li>
-					<li><a href="#">Shopping List</a></li>
+					<li><a (click)="onSelect('recipes')">Recipes</a></li>
+					<li><a (click)="onSelect('shopping-list')">Shopping List</a></li>
 					<li><a href="#">Save Data</a></li>
 					<li><a href="#">Fetch Data</a></li>
 				</ul>
 			</div>
 		</div>
-
 	</div>
-</section>
+</div>

@@ -1,1 +1,7 @@
-<p>recipee item</p>
+<a (click)="onSelected()">
+	<ul class="list-inline p-2 border my-2 rounded">
+		<li>{{recipe.name}}</li>
+		<li>{{recipe.description}}</li>
+		<li><img [src]="recipe.imagePath" class="img-fluid max-height-60 rounded" title="{{recipe.imagePath}}" /></li>
+      </ul>
+    </a>

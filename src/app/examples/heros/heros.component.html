@@ -1,0 +1,24 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+     <span class="mr-2 d-block text-danger"><b>type:</b> {{hero.type}}</span>
+    <span class="d-block"><b>Name:</b> {{hero.name}}</span>    
+    <span class="d-block mt-1"><b>encodedResponse:</b> {{hero.encodedResponse}}</span>
+    <div class="d-block mt-1" *ngIf="hero.type=='jpeg' &&hero.type=='png'"><img src="loadSource(hero)" title="{{hero.name}}" class="max-width-100"/></div>
+    <a class="d-block mt-1" href="files">Files</a>
+  </li>
+</ul>
+
+<div *ngIf="selectedHero">
+
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>Name: </span>{{selectedHero.name}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
