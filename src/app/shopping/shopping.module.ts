@@ -12,6 +12,8 @@ import { RecipesItemComponent } from './recipes/recipes-list/recipes-item/recipe
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingHomeComponent } from './home/home.component';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { RecipeService } from './recipes/recipe.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
@@ -24,6 +26,6 @@ import { ShoppingHomeComponent } from './home/home.component';
     ])
   ],
   declarations: [ShoppingComponent, ShoppingHomeComponent, HeaderComponent, RecipesComponent, RecipesListComponent, RecipesDetailComponent, RecipesItemComponent, ShoppingListComponent, ShoppingListComponent, ShoppingEditComponent],
-  providers: []
+  providers: [ShoppingListService, RecipeService]
 })
 export class ShoppingModule { }

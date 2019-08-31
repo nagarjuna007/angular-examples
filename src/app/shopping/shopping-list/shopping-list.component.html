@@ -1,12 +1,12 @@
 <section>
-  <div class="row">
-    <div class="col-10">
-      <app-shopping-edit (ingredientAdded)="onIngredientAdded($event)"></app-shopping-edit>
-      <hr/>
-      <p>The List</p>
-      <ul>
-        <li *ngFor="let ingredient of ingredients"><a href="#">{{ingredient.name}} - {{ingredient.amount}}</a></li>
-      </ul>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-10">
+			<app-shopping-edit></app-shopping-edit>
+			<hr/>
+				<p>The List</p>
+				<ul>
+					<li *ngFor="let ingredient of ingredients"><a href="#">{{ingredient.name}} - {{ingredient.amount}}</a></li>
+				</ul>
+		</div>
+	</div>
 </section>

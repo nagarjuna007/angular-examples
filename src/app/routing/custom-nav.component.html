@@ -1,0 +1,13 @@
+<app-header>
+</app-header>
+<div class="container my-3">
+	<div class="bg-white p-3 rounded">
+		<ul class="list-inline">
+			<li role="presentation" class="active"><a routerLink="/nav/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+			<li role="presentation"><a routerLink="/nav/servers" routerLinkActive="active">Servers</a></li>
+			<li role="presentation"><a routerLink="/nav/users" routerLinkActive="active">Users</a></li>
+		</ul>
+		<hr/>
+			<router-outlet></router-outlet>
+	</div>
+</div>

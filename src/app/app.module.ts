@@ -14,9 +14,10 @@ import { ServerModule } from './server-module/server.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { ExamplesModule } from './examples/examples.module';
 import { DropdownDirective } from './shared/dropdown.directive';
+import {CustomNavModule} from './routing/custom-nav.module';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, GameModule, ServerModule, ShoppingModule, ExamplesModule,ServicesModule,
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, GameModule, ServerModule, ShoppingModule, CustomNavModule,ExamplesModule,ServicesModule,
     RouterModule.forRoot([
       { path: '', component: SiteMapComponent }
     ])

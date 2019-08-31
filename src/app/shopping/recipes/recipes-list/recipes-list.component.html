@@ -5,7 +5,7 @@
 			<button class="btn btn-primary" type="button">Add Recipe</button>
   </div>
   <div class="col-sm-12">
-<app-recipes-item *ngFor="let recipeEl of Recipes" [recipe]="recipeEl" (recipeSelected)="onRecipeSelected(recipeEl)"></app-recipes-item>
+<app-recipes-item *ngFor="let recipeEl of recipes" [recipe]="recipeEl"></app-recipes-item>
   </div>
 </div>
 </div>

@@ -11,6 +11,9 @@ import { NewAccountComponent } from './new-account/new-account.component';
 import { LoggingService } from './logging.service';
 import { AccountsService } from './accounts.service';
 import { UsersService } from './users.service';
+import { InActiveUserComponent } from './inactive-users/inactive-users.component';
+import { ActiveUserComponent } from './active-users/active-users.component';
+import { CounterService } from './counter.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, RouterModule.forRoot([
@@ -21,7 +24,7 @@ import { UsersService } from './users.service';
     }
   ])
   ],
-  declarations: [HomeComponent, ServiceComponent, ServiceHeaderComponent, AccountComponent, NewAccountComponent],
-  providers: [AccountsService, LoggingService, UsersService]
+  declarations: [HomeComponent, ServiceComponent, ServiceHeaderComponent, AccountComponent, NewAccountComponent, ActiveUserComponent, InActiveUserComponent],
+  providers: [AccountsService, LoggingService, UsersService, CounterService]
 })
 export class ServicesModule { }

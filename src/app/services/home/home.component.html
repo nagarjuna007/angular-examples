@@ -1,7 +1,9 @@
 <div class="container my-3">
 	<div class="bg-white p-3 rounded">
-		<app-new-account></app-new-account>
+		<app-active-user></app-active-user>
+		<app-inactive-user></app-inactive-user>
 		<hr>
 		<app-account *ngFor="let acc of accounts; let i = index" [account]="acc" [id]="i"></app-account>
+    	<app-new-account></app-new-account>
 	</div>
 </div>
