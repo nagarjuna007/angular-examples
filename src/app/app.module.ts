@@ -8,21 +8,28 @@ import { WarningAlertComponent } from './alerts/warning-alert/warning-alert.comp
 import { SuccessAlertComponent } from './alerts/success-alert/success-alert.component';
 import { RouterModule } from "@angular/router";
 import { GameModule } from './game/game.module';
-import {ServicesModule} from './services/services.module';
+import { ServicesModule } from './services/services.module';
 import { SiteMapComponent } from './site-map/site-map.component';
 import { ServerModule } from './server-module/server.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { ExamplesModule } from './examples/examples.module';
 import { DropdownDirective } from './shared/dropdown.directive';
-import {CustomNavModule} from './routing/custom-nav.module';
+import { CustomNavModule } from './routing/custom-nav.module';
+import { NoDataFoundComponent } from './routing/page-not-found/page-not-found.component';
+import { ErrorPageComponent } from './routing/error-page/error-page.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, GameModule, ServerModule, ShoppingModule, CustomNavModule,ExamplesModule,ServicesModule,
+  imports: [
+    //AppRoutingModule,
+    BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, GameModule, ServerModule, ShoppingModule, CustomNavModule, ExamplesModule, ServicesModule,
     RouterModule.forRoot([
-      { path: '', component: SiteMapComponent }
+      { path: '', component: SiteMapComponent },
+      { path: 'not-found', component: ErrorPageComponent,data:{message:'Page not Found..?'} },
+      //{ path: 'not-found', component: NoDataFoundComponent },
+      { path: '**', redirectTo: '/not-found' }
     ])
   ],
-  declarations: [AppComponent, WarningAlertComponent, SuccessAlertComponent, SiteMapComponent, DropdownDirective],
+  declarations: [AppComponent, WarningAlertComponent, NoDataFoundComponent, SuccessAlertComponent, SiteMapComponent, DropdownDirective, ErrorPageComponent],
   bootstrap: [AppComponent],
   providers: []
 })

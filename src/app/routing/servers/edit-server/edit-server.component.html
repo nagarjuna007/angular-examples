@@ -1,5 +1,7 @@
-<div class="form-group">
-  <label for="name">Server Name</label>
+<div *ngIf="!allowEdit">You're not allowd to edit</div>
+<div *ngIf="allowEdit">
+	<div class="form-group">
+		<label for="name">Server Name</label>
   <input
     type="text"
     id="name"
@@ -19,3 +21,4 @@
 <button
   class="btn btn-primary"
   (click)="onUpdateServer()">Update Server</button>
+  </div>

@@ -17,4 +17,4 @@ export class AppComponent  {
   }
 }
 
-// https://www.freelogoservices.com
+//ng generate application app1 –-routing

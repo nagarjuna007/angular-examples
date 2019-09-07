@@ -14,12 +14,29 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 
+import { AuthGuard } from '../auth-guard.service';
+import { AuthService } from '../auth.service';
+import { CanDeactivateGuard } from '../can-deactivate-guard.service';
+import { ServerReslover } from './servers/server/server-reslover.service';
+
 const navRoutes: Routes = [
   {
     path: 'nav', component: customNavComponent, children: [
       { path: 'home', component: NavRouteHomeComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'servers', component: ServersComponent }
+      {
+        path: 'users', component: UsersComponent, children: [
+          { path: ':id/:name', component: UserComponent }
+        ]
+      },
+      {
+        path: 'servers',
+        // canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component: ServersComponent, children: [
+          { path: ':id', component: ServerComponent, reslove: { ServerReslover } },
+          { path: ':id/:edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
+        ]
+      }
     ]
   }
 ];
@@ -29,6 +46,6 @@ const navRoutes: Routes = [
   ],
   declarations: [NavRouteHomeComponent, customNavComponent, HeaderComponent, UsersComponent, UserComponent, HomeOneComponent, EditServerComponent, ServersComponent,
     ServerComponent],
-  providers: [ServersService]
+  providers: [ServersService, AuthGuard, AuthService, CanDeactivateGuard, ServerReslover]
 })
 export class CustomNavModule { }
