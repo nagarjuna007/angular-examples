@@ -1,4 +1,5 @@
-<a (click)="onSelected()">
+<!-- (click)="onSelected()" -->
+<a [routerLink]="[index]" routerLinkActive="active">
 	<ul class="list-inline p-2 border my-2 rounded">
 		<li>{{recipe.name}}</li>
 		<li>{{recipe.description}}</li>

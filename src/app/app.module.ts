@@ -17,16 +17,18 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { CustomNavModule } from './routing/custom-nav.module';
 import { NoDataFoundComponent } from './routing/page-not-found/page-not-found.component';
 import { ErrorPageComponent } from './routing/error-page/error-page.component';
+import { ObservablesModule } from './observables/observables.module';
+import { CustomFormsModule } from './forms/forms.module';
 
 @NgModule({
   imports: [
     //AppRoutingModule,
-    BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, GameModule, ServerModule, ShoppingModule, CustomNavModule, ExamplesModule, ServicesModule,
+    BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, GameModule, ServerModule, ShoppingModule, CustomNavModule, ExamplesModule, ServicesModule, ObservablesModule, CustomFormsModule,
     RouterModule.forRoot([
       { path: '', component: SiteMapComponent },
-      { path: 'not-found', component: ErrorPageComponent,data:{message:'Page not Found..?'} },
+      { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not Found..?' } },
       //{ path: 'not-found', component: NoDataFoundComponent },
-      { path: '**', redirectTo: '/not-found' }
+      { path: 'yuyyuyh', redirectTo: '/not-found' }
     ])
   ],
   declarations: [AppComponent, WarningAlertComponent, NoDataFoundComponent, SuccessAlertComponent, SiteMapComponent, DropdownDirective, ErrorPageComponent],

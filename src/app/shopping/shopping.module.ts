@@ -14,18 +14,29 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { ShoppingHomeComponent } from './home/home.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipes/recipe.service';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'shopping', component: ShoppingComponent, children: [
-          { path: 'home', component: ShoppingHomeComponent }
+          { path: 'home', component: ShoppingHomeComponent },
+          {
+            path: 'recipes', component: RecipesComponent, children: [
+              { path: '', component: RecipeStartComponent },              
+              { path: 'new', component: RecipeEditComponent },
+              { path: ':id', component: RecipesDetailComponent },
+              { path: ':id/edit', component: RecipeEditComponent }
+            ]
+          },
+          { path: 'shopping-list', component: ShoppingListComponent }
         ]
       }
     ])
   ],
-  declarations: [ShoppingComponent, ShoppingHomeComponent, HeaderComponent, RecipesComponent, RecipesListComponent, RecipesDetailComponent, RecipesItemComponent, ShoppingListComponent, ShoppingListComponent, ShoppingEditComponent],
+  declarations: [ShoppingComponent, ShoppingHomeComponent, RecipeStartComponent, HeaderComponent, RecipesComponent, RecipesListComponent, RecipesDetailComponent, RecipesItemComponent, RecipeEditComponent, ShoppingListComponent, ShoppingListComponent, ShoppingEditComponent],
   providers: [ShoppingListService, RecipeService]
 })
 export class ShoppingModule { }

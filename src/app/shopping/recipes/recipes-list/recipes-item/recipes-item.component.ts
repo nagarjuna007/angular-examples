@@ -10,6 +10,7 @@ import { Recipe } from '../../recipes.model';
 export class RecipesItemComponent {
   @Input() recipe: Recipe;
   @Output() recipeSelected = new EventEmitter<void>();
+  @Input() index: number;
 
   constructor(private recipeService: RecipeService) { }
 
