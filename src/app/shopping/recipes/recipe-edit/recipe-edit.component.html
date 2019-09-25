@@ -1,1 +1,49 @@
-<h3>Edit</h3>
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+	<div class="row">
+		<div class="col-sm-6 mb-1">
+			<button class="btn btn-primary mr-1" type="submit">Save</button>
+      <button class="btn btn-primary" type="button">Cancel</button>
+  </div>
+  <div class="col-sm-6">
+<div class="form-group">
+  <label>Name</label>
+  <input type="text" class="form-control" id="name" formControlName="name" />
+</div>
+  </div>
+  <div class="col-sm-6">
+<div class="form-group">
+  <label>Image Path</label>
+  <input type="text" class="form-control" id="imagePath" formControlName="imagePath" />
+</div>
+  </div>
+   <div class="col-sm-6">
+<div class="form-group">
+  <label>Description</label>
+  <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+</div>
+  </div>
+   <div class="col-sm-6">
+     <img src="" class="img-fluid"/>
+   </div>
+
+</div>
+<div formArrayName="ingredients">
+<div class="row" *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls">
+   <div class="col-5">
+<div class="form-group mr-1">
+  <input type="text" class="form-control" id="imagePath"/>
+</div>
+  </div>
+   <div class="col-5">
+<div class="form-group mr-1">
+  <input type="text" class="form-control" id="number" placeholder="number"/>
+</div>
+  </div>
+ <div class="col-2">
+<div class="form-group">
+  <button class="btn btn-primary" type="button">X</button>
+</div>
+  </div>
+</div>
+</div>
+</form>

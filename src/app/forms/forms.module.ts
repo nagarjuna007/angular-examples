@@ -5,11 +5,13 @@ import { HeaderComponent } from './header/header.component';
 import { FormsComponent } from './forms.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsComponent} from './reactiveForms/reactive-form.component';
 
 const routes: Routes = [
   {
     path: 'forms', component: FormsComponent, children: [
-      { path: '', component: HomeComponent }
+      { path: '', component: HomeComponent },
+      { path: 'reactive', component:ReactiveFormsComponent }
     ]
   }
 ];
@@ -18,7 +20,8 @@ const routes: Routes = [
   declarations: [
     FormsComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ReactiveFormsComponent
   ],
   imports: [
     FormsModule,
