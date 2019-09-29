@@ -1,8 +1,8 @@
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
 	<div class="row">
 		<div class="col-sm-6 mb-1">
-			<button class="btn btn-primary mr-1" type="submit">Save</button>
-      <button class="btn btn-primary" type="button">Cancel</button>
+			<button class="btn btn-primary mr-1" [disabled]="!recipeForm.valid" type="submit">Save</button>
+      <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
   </div>
   <div class="col-sm-6">
 <div class="form-group">
@@ -13,7 +13,7 @@
   <div class="col-sm-6">
 <div class="form-group">
   <label>Image Path</label>
-  <input type="text" class="form-control" id="imagePath" formControlName="imagePath" />
+  <input type="text" class="form-control" id="imagePath" formControlName="imagePath" #imagePath />
 </div>
   </div>
    <div class="col-sm-6">
@@ -23,27 +23,30 @@
 </div>
   </div>
    <div class="col-sm-6">
-     <img src="" class="img-fluid"/>
+     <img [src]="imagePath.value" class="img-fluid"/>
    </div>
 
 </div>
 <div formArrayName="ingredients">
-<div class="row" *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls">
+<div class="row" *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i=index" [formGroupName]="i">
    <div class="col-5">
 <div class="form-group mr-1">
-  <input type="text" class="form-control" id="imagePath"/>
+  <input type="text" class="form-control" id="imagePath" formControlName="name"/>
 </div>
   </div>
    <div class="col-5">
 <div class="form-group mr-1">
-  <input type="text" class="form-control" id="number" placeholder="number"/>
+  <input type="text" class="form-control" id="number" placeholder="number" formControlName="amount"/>
 </div>
   </div>
  <div class="col-2">
 <div class="form-group">
-  <button class="btn btn-primary" type="button">X</button>
+  <button class="btn btn-primary" type="button" (click)="onDeleteIngredient(i)">X</button>
 </div>
   </div>
 </div>
+</div>
+<div class="col-12">
+  <button class="btn btn-primary" type="button" (click)="onAddIngredient()">Add Ingredients</button>
 </div>
 </form>
