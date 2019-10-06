@@ -1,7 +1,7 @@
 <div class="bg-white">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-8">
+			<div class="col-4">
 				<div class="d-flex align-items-center">
 					<div class="menu-btn">
             <span class="line one"></span>
@@ -11,12 +11,13 @@
 					<div class="logo py-2 menu-line position-relative" routerLink="/">RECIPE SHOPPING</div>
 				</div>
 			</div>
-			<div class="col-4">
+			<div class="col-8">
 				<ul class="list-inline">
 					<li routerLinkActive="active"><a routerLink="/shopping/recipes">Recipes</a></li>
 					<li><a routerLink="/shopping/shopping-list">Shopping List</a></li>
-					<li><a href="#">Save Data</a></li>
-					<li><a href="#">Fetch Data</a></li>
+					<li><a (click)="onSaveData()">Save Data</a></li>
+					<li><a (click)="onFetchData()">Fetch Data</a></li>
+           <li><a routerLink="/shopping/auth">Auth</a></li>
 				</ul>
 			</div>
 		</div>

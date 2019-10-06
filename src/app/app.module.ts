@@ -20,7 +20,7 @@ import { ErrorPageComponent } from "./routing/error-page/error-page.component";
 import { ObservablesModule } from "./observables/observables.module";
 import { CustomFormsModule } from "./forms/forms.module";
 import { CustomPipesModule } from "./pipes/custom-pipes.module";
-import {HttpRequestModule} from "./http-requests/http-requests.module";
+import { HttpRequestModule } from "./http-requests/http-requests.module";
 
 @NgModule({
   imports: [

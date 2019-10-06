@@ -13,18 +13,18 @@ export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
   recipes: Recipe[] = [
-    new Recipe(
-      "A Test Recipe",
-      "simplt a Test",
-      "https://media3.s-nbcnews.com/j/MSNBC/Components/Video/201808/tdy_food_klg_chicken_180828_1920x1080.today-inline-vid-featured-desktop.jpg",
-      [new Ingredient("Meat", 1), new Ingredient("French Fries", 2)]
-    ),
-    new Recipe(
-      "second Recipe",
-      "Queen Description",
-      "https://media3.s-nbcnews.com/j/MSNBC/Components/Video/201808/tdy_food_klg_chicken_180828_1920x1080.today-inline-vid-featured-desktop.jpg",
-      [new Ingredient("Bun", 2), new Ingredient("Meat", 2)]
-    )
+    // new Recipe(
+    //   "A Test Recipe",
+    //   "simplt a Test",
+    //   "https://media3.s-nbcnews.com/j/MSNBC/Components/Video/201808/tdy_food_klg_chicken_180828_1920x1080.today-inline-vid-featured-desktop.jpg",
+    //   [new Ingredient("Meat", 1), new Ingredient("French Fries", 2)]
+    // ),
+    // new Recipe(
+    //   "second Recipe",
+    //   "Queen Description",
+    //   "https://media3.s-nbcnews.com/j/MSNBC/Components/Video/201808/tdy_food_klg_chicken_180828_1920x1080.today-inline-vid-featured-desktop.jpg",
+    //   [new Ingredient("Bun", 2), new Ingredient("Meat", 2)]
+    // )
   ];
   constructor(private shoppingListService: ShoppingListService) {}
   getRecipes() {
@@ -47,5 +47,9 @@ export class RecipeService {
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes.slice());
+  }
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+   this.recipesChanged.next(this.recipes.slice());
   }
 }
