@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { ShoppingComponent } from "./shopping.component";
 import { HeaderComponent } from "./header/header.component";
@@ -21,6 +21,8 @@ import { RecipesResloverService } from "./recipes/recipes-reslover.service";
 import { AuthComponent } from "../auth/auth.component";
 import { AuthService } from "../auth/auth.service";
 import { LoaderComponent } from "../loader/loader.component";
+import { AuthInterceptorService } from "../auth/auth-interceptor.service";
+import {AuthGuard} from '../auth/auth.guard';
 
 @NgModule({
   imports: [
@@ -32,11 +34,13 @@ import { LoaderComponent } from "../loader/loader.component";
       {
         path: "shopping",
         component: ShoppingComponent,
+        canActivate:[AuthGuard],
         children: [
           { path: "home", component: ShoppingHomeComponent },
           {
             path: "recipes",
             component: RecipesComponent,
+            canActivate:[AuthGuard],
             children: [
               { path: "", component: RecipeStartComponent },
               { path: "new", component: RecipeEditComponent },
@@ -79,7 +83,12 @@ import { LoaderComponent } from "../loader/loader.component";
     RecipeService,
     DataStorageService,
     RecipesResloverService,
-    AuthService
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ]
 })
 export class ShoppingModule {}

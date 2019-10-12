@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'my-Shopping-home',
-  templateUrl: './home.component.html'
+  selector: "my-Shopping-home",
+  templateUrl: "./home.component.html"
 })
-export class ShoppingHomeComponent {
-  loadedFeature = 'recipe';
-  onNavigate(feature: string) {
-    this.loadedFeature = feature;
+export class ShoppingHomeComponent implements OnInit {
+  // loadedFeature = "recipe";
+  // onNavigate(feature: string) {
+  //   this.loadedFeature = feature;
+  // }
+  ngOnInit(){
+    
   }
 }
