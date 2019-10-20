@@ -22,7 +22,10 @@ import { AuthComponent } from "../auth/auth.component";
 import { AuthService } from "../auth/auth.service";
 import { LoaderComponent } from "../loader/loader.component";
 import { AuthInterceptorService } from "../auth/auth-interceptor.service";
-import {AuthGuard} from '../auth/auth.guard';
+import { AuthGuard } from "../auth/auth.guard";
+import { AlertComponent } from "../alerts/alert.component";
+import { PlaceholderDirective } from "../placeholder/placeholder.directive";
+import { LoggingService } from "../logging.service";
 
 @NgModule({
   imports: [
@@ -34,13 +37,12 @@ import {AuthGuard} from '../auth/auth.guard';
       {
         path: "shopping",
         component: ShoppingComponent,
-        canActivate:[AuthGuard],
         children: [
           { path: "home", component: ShoppingHomeComponent },
           {
             path: "recipes",
             component: RecipesComponent,
-            canActivate:[AuthGuard],
+            canActivate: [AuthGuard],
             children: [
               { path: "", component: RecipeStartComponent },
               { path: "new", component: RecipeEditComponent },
@@ -76,7 +78,9 @@ import {AuthGuard} from '../auth/auth.guard';
     ShoppingListComponent,
     ShoppingEditComponent,
     AuthComponent,
-    LoaderComponent
+    LoaderComponent,
+    AlertComponent,
+    PlaceholderDirective
   ],
   providers: [
     ShoppingListService,
@@ -84,11 +88,13 @@ import {AuthGuard} from '../auth/auth.guard';
     DataStorageService,
     RecipesResloverService,
     AuthService,
+    LoggingService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
     }
-  ]
+  ],
+  entryComponents: [AlertComponent]
 })
 export class ShoppingModule {}
