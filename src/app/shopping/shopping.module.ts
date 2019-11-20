@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { RouterModule } from "@angular/router";
 import { ShoppingComponent } from "./shopping.component";
 import { HeaderComponent } from "./header/header.component";
@@ -12,7 +14,6 @@ import { RecipesItemComponent } from "./recipes/recipes-list/recipes-item/recipe
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
 import { ShoppingHomeComponent } from "./home/home.component";
-import { ShoppingListService } from "./shopping-list/shopping-list.service";
 import { RecipeService } from "./recipes/recipe.service";
 import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
@@ -26,6 +27,12 @@ import { AuthGuard } from "../auth/auth.guard";
 import { AlertComponent } from "../alerts/alert.component";
 import { PlaceholderDirective } from "../placeholder/placeholder.directive";
 import { LoggingService } from "../logging.service";
+import * as fromApp from "../store/app.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "../auth/store/auth.effects";
+import { environment } from "../../environments/environment";
+import { StoreRouterConnectingModule } from "@ngrx/router-store";
+import { RecipeEffects } from "./recipes/store/recipe.effects";
 
 @NgModule({
   imports: [
@@ -33,6 +40,11 @@ import { LoggingService } from "../logging.service";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreDevtoolsModule,
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([AuthEffects, RecipeEffects]),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
+    StoreRouterConnectingModule.forRoot(),
     RouterModule.forRoot([
       {
         path: "shopping",
@@ -83,7 +95,6 @@ import { LoggingService } from "../logging.service";
     PlaceholderDirective
   ],
   providers: [
-    ShoppingListService,
     RecipeService,
     DataStorageService,
     RecipesResloverService,

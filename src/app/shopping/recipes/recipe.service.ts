@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
+import { Action, Store } from "@ngrx/store";
 import { EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 import { Recipe } from "./recipes.model";
 import { Ingredient } from "../../shared/ingredient.model";
-import { ShoppingListService } from "../shopping-list/shopping-list.service";
+import * as ShoppingListActions from "../shopping-list/store/shopping-list.actions";
+import * as fromApp from "../../store/app.reducer";
 
 @Injectable()
 export class RecipeService {
@@ -26,7 +28,9 @@ export class RecipeService {
     //   [new Ingredient("Bun", 2), new Ingredient("Meat", 2)]
     // )
   ];
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor(
+    private store: Store<fromApp.AppState>
+  ) {}
   getRecipes() {
     return this.recipes.slice();
   }
@@ -34,7 +38,8 @@ export class RecipeService {
     return this.recipes[index];
   }
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.shoppingListService.addIngredients(ingredients);
+    // this.shoppingListService.addIngredients(ingredients);
+    this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
@@ -50,6 +55,6 @@ export class RecipeService {
   }
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
-   this.recipesChanged.next(this.recipes.slice());
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
