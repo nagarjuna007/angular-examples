@@ -21,7 +21,9 @@ import { ObservablesModule } from "./observables/observables.module";
 import { CustomFormsModule } from "./forms/forms.module";
 import { CustomPipesModule } from "./pipes/custom-pipes.module";
 import { HttpRequestModule } from "./http-requests/http-requests.module";
-
+import {AnimationsModule} from "./animations/animations.module";
+import {OfflineModule} from "./offline/offline.module";
+import { PostComponent } from "./offline/post/post.component";
 
 @NgModule({
   imports: [
@@ -40,6 +42,8 @@ import { HttpRequestModule } from "./http-requests/http-requests.module";
     ObservablesModule,
     CustomFormsModule,
     HttpRequestModule,
+    AnimationsModule,
+    OfflineModule,
     RouterModule.forRoot([
       { path: "", component: SiteMapComponent },
       {

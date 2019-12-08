@@ -5,7 +5,7 @@
 			<hr/>
 				<p>The List</p>
 				<ul>
-					<li *ngFor="let ingredient of (ingredients | async).ingredients; let i=index" (click)="onEditItem(i)">{{ingredient.name}} - {{ingredient.amount}}</li>
+					<li *ngFor="let ingredient of (shoppingListState | async).ingredients; let i=index" (click)="onEditItem(i)">{{ingredient.name}} - {{ingredient.amount}}</li>
 				</ul>
 		</div>
 	</div>

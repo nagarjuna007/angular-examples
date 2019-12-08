@@ -21,7 +21,8 @@ export class RecipesDetailComponent implements OnInit {
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store<fromApp.AppState>
+    // private store: Store<fromApp.AppState>
+    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>
   ) {}
   ngOnInit() {
     this.activatedRoute.params
@@ -46,7 +47,9 @@ export class RecipesDetailComponent implements OnInit {
 
   onAddToShoppingList() {
     // this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
-    this.store.dispatch(new ShoppingListActions.AddIngredients(this.recipe.ingredients));
+    this.store.dispatch(
+      new ShoppingListActions.AddIngredients(this.recipe.ingredients)
+    );
   }
   editRecipe() {
     this.router.navigate(["edit"], { relativeTo: this.activatedRoute });

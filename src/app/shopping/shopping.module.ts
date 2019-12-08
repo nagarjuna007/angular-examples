@@ -33,6 +33,7 @@ import { AuthEffects } from "../auth/store/auth.effects";
 import { environment } from "../../environments/environment";
 import { StoreRouterConnectingModule } from "@ngrx/router-store";
 import { RecipeEffects } from "./recipes/store/recipe.effects";
+import { shoppingListReducer } from "./shopping-list/shopping-list.reducers";
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { RecipeEffects } from "./recipes/store/recipe.effects";
     ReactiveFormsModule,
     HttpClientModule,
     StoreDevtoolsModule,
-    StoreModule.forRoot(fromApp.appReducer),
+    //fromApp.appReducer,
+    StoreModule.forRoot({ shoppingList: shoppingListReducer }),
     EffectsModule.forRoot([AuthEffects, RecipeEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),

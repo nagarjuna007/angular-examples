@@ -10,15 +10,16 @@ import * as fromApp from "../../store/app.reducer";
   templateUrl: "./shopping-list.component.html"
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  ingredients: Observable<{ ingredients: Ingredient[] }>;
+  shoppingListState: Observable<{ ingredients: Ingredient[] }>;
   private igChangeSub: Subscription;
 
   constructor(
-    private store: Store<fromApp.AppState>
+    // private store: Store<fromApp.AppState>
+    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>
   ) {}
 
   ngOnInit() {
-    this.ingredients = this.store.select("shoppingList");
+    this.shoppingListState = this.store.select("shoppingList");
     // this.store.select("shoppingList").subscribe();
     // this.ingredients = this.shoppingListService.getIngredients();
     // this.igChangeSub = this.shoppingListService.ingredientsChanged.subscribe(
@@ -28,8 +29,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     // );
   }
   onEditItem(index: number) {
-   // this.shoppingListService.startedEditing.next(index);
-   this.store.dispatch(new ShoppingListActions.StartEdit(index));
+    // this.shoppingListService.startedEditing.next(index);
+    this.store.dispatch(new ShoppingListActions.StartEdit(index));
   }
   ngOnDestroy() {
     // this.igChangeSub.unsubscribe();
