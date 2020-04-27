@@ -18,3 +18,5 @@ export class AppComponent  {
 }
 
 //ng generate application app1 –-routing
+//npm install --save @angular/elements
+//https://update.angular.io/
